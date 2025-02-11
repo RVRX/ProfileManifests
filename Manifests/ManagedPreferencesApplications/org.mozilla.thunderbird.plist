@@ -384,6 +384,157 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>78.0</string>
+			<key>pfm_description</key>
+			<string>Enable or disable the detection of captive portals.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#captiveportal</string>
+			<key>pfm_name</key>
+			<string>CaptivePortal</string>
+			<key>pfm_title</key>
+			<string>Enable Captive Portal</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+        <!-- TODO: Certificates | ImportEnterpriseRoots -->
+        <!-- Certificates | ImportEnterpriseRoots -->
+        <!-- Cookies -->
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>78.0</string>
+			<key>pfm_description</key>
+			<string>Set the default download directory.
+You can use ${home} for the native home directory.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#defaultdownloaddirectory</string>
+			<key>pfm_name</key>
+			<string>DefaultDownloadDirectory</string>
+			<key>pfm_title</key>
+			<string>Default Download Directory</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>68.0</string>
+			<key>pfm_description</key>
+			<string>Turn off application updates within Thunderbird.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disableappupdate</string>
+			<key>pfm_name</key>
+			<string>DisableAppUpdate</string>
+			<key>pfm_title</key>
+			<string>Disable App Update</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>91.0</string>
+			<key>pfm_description</key>
+			<string>Disable the built in PDF viewer. PDF files are downloaded and sent externally.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disablebuiltinpdfviewer</string>
+			<key>pfm_name</key>
+			<string>DisableBuiltinPDFViewer</string>
+			<key>pfm_title</key>
+			<string>Disable Built In PDF Viewer</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+        <!-- TODO: DisabledCiphers -->
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>68.0</string>
+			<key>pfm_description</key>
+			<string></string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disabledevelopertools</string>
+			<key>pfm_name</key>
+			<string>DisableDeveloperTools</string>
+			<key>pfm_title</key>
+			<string>Disable Developer Tools</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>68.0</string>
+			<key>pfm_description</key>
+			<string>Remove the master password functionality.
+If this value is true, it works the same as setting PrimaryPassword to false and removes the primary password functionality.
+If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMasterPasswordCreation takes precedent.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disablemasterpasswordcreation</string>
+			<key>pfm_name</key>
+			<string>DisableMasterPasswordCreation</string>
+			<key>pfm_title</key>
+			<string>Disable Master Password Creation</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>78.0</string>
+			<key>pfm_description</key>
+			<string>Do not allow passwords to be shown in saved logins</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disablepasswordreveal</string>
+			<key>pfm_name</key>
+			<string>DisablePasswordReveal</string>
+			<key>pfm_title</key>
+			<string>Disable Password Reveal</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>78.0</string>
+			<key>pfm_description</key>
+			<string>Disable safe mode within the browser.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disablesafemode</string>
+			<key>pfm_name</key>
+			<string>DisableSafeMode</string>
+			<key>pfm_title</key>
+			<string>Disable Safe Mode</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+        <!-- TODO: DisableSecurityBypass -->
+
+
+		<dict>
+            <key>pfm_app_min</key>
+            <string>77.0</string>
+			<key>pfm_description</key>
+			<string>Prevent system add-ons from being installed or update.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#disablesystemaddonupdate</string>
+			<key>pfm_name</key>
+			<string>DisableSystemAddonUpdate</string>
+			<key>pfm_title</key>
+			<string>Disable System Addon Updates</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+
+
 		<!-- Example: Minimal Key -->
 		<!-- This is the minimal requirement for a key to be managed -->
 		<dict>
