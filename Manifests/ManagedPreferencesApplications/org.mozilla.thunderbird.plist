@@ -186,7 +186,7 @@ You should specify a version that exists or is guaranteed to exist. If you speci
 			<key>pfm_documentation_url</key>
 			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#appupdatepin</string>
 			<key>pfm_name</key>
-			<string>AppApdatePin</string>
+			<string>AppUpdatePin</string>
 			<key>pfm_title</key>
 			<string>Pin App Version</string>
 			<key>pfm_type</key>
@@ -708,12 +708,6 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			</array>
 			<key>pfm_title</key>
 			<string>Minimum SSL Version</string>
-			<key>pfm_type</key>
-			<string>string</string>
-		</dict>
-		<dict>
-			<key>pfm_name</key>
-			<string>AppUpdatePin</string>
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
