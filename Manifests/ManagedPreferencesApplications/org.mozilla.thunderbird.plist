@@ -2,87 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	
-	<!-- *************************** OPTIONAL KEYS *************************** -->
-	<!-- All keys below this comment are only optional but help the user with more information about the payload. -->
-	
-	<!-- This key should contain a URL to the download page of the application it's configuring. -->
 	<key>pfm_app_url</key>
 	<string>https://www.thunderbird.net/en-US/download/</string>
-	
-	<!-- This key should contain a URL to the documentation of the keys this application supports. (And from where you have taken the information to create this manifest)-->
+	<key>pfm_description</key>
+	<string>Configure Settings for Mozilla's Thunderbird</string>
 	<key>pfm_documentation_url</key>
 	<string>https://github.com/thunderbird/policy-templates</string>
-	
-	<!-- The scope where this payload is valid. -->
-	<!-- If this payload is only for iOS and tvOS this should be set to only system.-->
-	<!-- On macOS you include all scopes this payload is valid to install to. -->
-	<!-- If this is not included, it will default to system AND user.-->
-    <!-- TODO -->
-	<key>pfm_targets</key>
-	<array>
-		<string>system</string>
-		<string>user</string>
-	</array>
-	
-	<!-- The platforms where this payload is valid. -->
-	<!-- If this is not included, it will default to only macOS. -->
+	<key>pfm_domain</key>
+	<string>org.mozilla.thunderbird</string>
+	<key>pfm_format_version</key>
+	<real>1</real>
+	<key>pfm_last_modified</key>
+	<date>2025-01-10T08:00:00Z</date>
 	<key>pfm_platforms</key>
 	<array>
 		<string>macOS</string>
 	</array>
-	
-	<!-- *************************** REQUIRED KEYS *************************** -->
-	<!-- All keys below this comment are required for this manifest to be loaded by the framework. -->
-
-	<!-- A description of the payload. -->
-	<key>pfm_description</key>
-	<string>Configure Settings for Mozilla's Thunderbird</string>
-	
-	<!-- The preference domain of the payload. This should be the same as PayloadType in the pfm_subkeys.-->
-	<key>pfm_domain</key>
-	<string>org.mozilla.thunderbird.plist</string>
-	
-	<!-- The format version is used by the application to know it can support all manifest keys in this manifest. -->
-	<!-- Sometimes new keys are added, but those will not be supported by older versions of the application. -->
-	<!-- To avoid creating invalid payloads because of that, the app will not load manifests with newer format versions that it can support. -->
-	<!-- See this page for the current versions: https://github.com/erikberglund/ProfileManifests/wiki/Manifest-Format-Versions -->
-	<key>pfm_format_version</key>
-    <integer>1</integer> <!-- TODO -->
-	
-	<!-- Date the manifest was last modified. This is used for manifest collision. -->
-	<!-- Read more about that here: https://github.com/erikberglund/ProfileManifests/wiki/Manifest-Collision -->
-	<key>pfm_last_modified</key>
-	<date>2025-01-10T08:00:00Z</date>
-	
-	<!-- This is the title of the manifest -->
-	<key>pfm_title</key>
-    <string>Thunderbird</string> <!-- TODO idk -->
-	
-	<!-- This determines if there can be more than one payload in the profile for this PayloadType. -->
-	<key>pfm_unique</key>
-	<false/>
-	
-	<!-- This is the version number of this manifest, it's used to determine which manifest to load if two manifests with identical "pfm_domain" is found-->
-	<key>pfm_version</key>
-	<integer>1</integer>
-	
-	<!-- This is an array of all keys this payload can configure. They will be shown in order. -->
 	<key>pfm_subkeys</key>
 	<array>
-		
-		<!-- *************************** REQUIRED KEYS *************************** -->
-		<!-- Currently the "base" keys for each payload must be defined in each manifest -->
-		<!-- That is something I hope to move into the application and make the settings more simple. -->
-		<!-- But for now, these are required to create a valid payload on export. -->
-		
-		<!-- PayloadDescription -->
-		<!-- Description for the payload shown when the payload is installed. -->
 		<dict>
 			<key>pfm_default</key>
 			<string>Configures Thunderbird configuration preferences</string>
 			<key>pfm_description</key>
-			<string>Description of the payload.</string>
+			<string>The human-readable description of this payload. This description appears on the Detail screen.</string>
 			<key>pfm_description_reference</key>
 			<string>Optional. A human-readable description of this payload. This description is shown on the Detail screen.</string>
 			<key>pfm_name</key>
@@ -92,14 +34,11 @@
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- PayloadDisplayName -->
-		<!-- Display Name of the payload shown when the payload is installed. -->
 		<dict>
 			<key>pfm_default</key>
-			<string>Thunderbird</string>
+			<string>org.mozilla.thunderbird</string>
 			<key>pfm_description</key>
-			<string>Name of the payload.</string>
+			<string>The human-readable name for the profile payload. The name appears on the Detail screen and doesn't need to be unique.</string>
 			<key>pfm_description_reference</key>
 			<string>A human-readable name for the profile payload. This name is displayed on the Detail screen. It does not have to be unique.</string>
 			<key>pfm_name</key>
@@ -111,14 +50,12 @@
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- PayloadIdentifier -->
-		<!-- The base identifier this payload should use. This will then be expanded by the application to add the root identifier + the payload UUID to create a unique identifier automatically. -->
 		<dict>
 			<key>pfm_default</key>
-			<string>org.mozilla.thunderbird.plist</string>
+			<string>org.mozilla.thunderbird</string>
 			<key>pfm_description</key>
-			<string>A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier</string>
+			<string>The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A reverse-DNS-style identifier for the specific payload. It is usually the same identifier as the root-level PayloadIdentifier value with an additional component appended.</string>
 			<key>pfm_name</key>
@@ -130,14 +67,11 @@
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- PayloadType -->
-		<!-- This is the PayloadType of the payload. -->
 		<dict>
 			<key>pfm_default</key>
-			<string>org.mozilla.thunderbird.plist</string>
+			<string>org.mozilla.thunderbird</string>
 			<key>pfm_description</key>
-			<string>The type of the payload, a reverse dns string.</string>
+			<string>The payload type, which each payload domain's reference page specifies.</string>
 			<key>pfm_description_reference</key>
 			<string>The payload type.</string>
 			<key>pfm_name</key>
@@ -149,12 +83,10 @@
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- PayloadUUID -->
-		<!-- This is the PayloadUUID and it will be generated automatically. You should NOT edit this. -->
 		<dict>
 			<key>pfm_description</key>
-			<string>Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)</string>
+			<string>The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.</string>
 			<key>pfm_description_reference</key>
 			<string>A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique. In macOS, you can use uuidgen to generate reasonable UUIDs.</string>
 			<key>pfm_format</key>
@@ -168,19 +100,20 @@
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- PayloadVersion -->
-		<!-- This is the version of the payload. You should NOT edit this. -->
 		<dict>
 			<key>pfm_default</key>
 			<integer>1</integer>
 			<key>pfm_description</key>
-			<string>The version of the whole configuration profile.</string>
+			<string>The version of this specific payload.</string>
 			<key>pfm_description_reference</key>
 			<string>The version number of the individual payload.
 A profile can consist of payloads with different version numbers. For example, changes to the VPN software in iOS might introduce a new payload version to support additional features, but Mail payload versions would not necessarily change in the same release.</string>
 			<key>pfm_name</key>
 			<string>PayloadVersion</string>
+			<key>pfm_range_list</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>pfm_require</key>
 			<string>always</string>
 			<key>pfm_title</key>
@@ -188,12 +121,9 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_type</key>
 			<string>integer</string>
 		</dict>
-		
-		<!-- PayloadOrganization -->
-		<!-- This is the organization of the payload. You should NOT edit this. -->
 		<dict>
 			<key>pfm_description</key>
-			<string>This value describes the issuing organization of the profile, as displayed to the user</string>
+			<string>The human-readable string containing the name of the organization that provides the profile. This value doesn't need to match the organization payload value in the enclosing dictionary.</string>
 			<key>pfm_name</key>
 			<string>PayloadOrganization</string>
 			<key>pfm_title</key>
@@ -201,12 +131,7 @@ A profile can consist of payloads with different version numbers. For example, c
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-		
-		<!-- *************************** APPLICATION KEYS *************************** -->
-		<!-- You should add all keys this payload can manage below this comment. -->
-
-
-        <dict>
+		<dict>
 			<key>pfm_default</key>
 			<true/>
 			<key>pfm_description</key>
@@ -225,11 +150,10 @@ A profile can consist of payloads with different version numbers. For example, c
 			<string>Enable Enterprise Policies</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
-        </dict>
-
+		</dict>
 		<dict>
-            <key>pfm_app_min</key>
-            <string>75.0</string>
+			<key>pfm_app_min</key>
+			<string>75.0</string>
 			<key>pfm_description</key>
 			<string>Enable or disable automatic application update.</string>
 			<key>pfm_description_reference</key>
@@ -251,10 +175,9 @@ If you have disabled updates via DisableAppUpdate, this policy has no effect.</s
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>104.0</string>
+			<key>pfm_app_min</key>
+			<string>104.0</string>
 			<key>pfm_description</key>
 			<string>Prevent Thunderbird from being updated beyond the specified version.
 You can specify the version as xx. and Thunderbird will be updated with all minor versions, but will not be updated beyond the major version.
@@ -263,18 +186,17 @@ You should specify a version that exists or is guaranteed to exist. If you speci
 			<key>pfm_documentation_url</key>
 			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#appupdatepin</string>
 			<key>pfm_name</key>
-			<string>AppApdatePin</string>
+			<string>AppUpdatePin</string>
 			<key>pfm_title</key>
 			<string>Pin App Version</string>
 			<key>pfm_type</key>
 			<string>string</string>
-            <key>pfm_value_placeholder</key>
+			<key>pfm_value_placeholder</key>
 			<string>104.0</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68</string>
+			<key>pfm_app_min</key>
+			<string>68</string>
 			<key>pfm_description</key>
 			<string>Change the URL for application update if you are providing Thunderbird updates from a custom update server.</string>
 			<key>pfm_documentation_url</key>
@@ -285,50 +207,114 @@ You should specify a version that exists or is guaranteed to exist. If you speci
 			<string>App Update URL</string>
 			<key>pfm_type</key>
 			<string>string</string>
-            <key>pfm_value_placeholder</key>
-            <string>https://yoursite.com</string>
+			<key>pfm_value_placeholder</key>
+			<string>https://yoursite.com</string>
 		</dict>
-
-        <!--<dict>
-            <key>pfm_app_min</key>
-            <string></string>
-			<key>pfm_description</key>
-			<string>Configure sites that support integrated authentication.
-See https://developer.mozilla.org/en-US/docs/Mozilla/Integrated_authentication for more information.
-PrivateBrowsing enables integrated authentication in private browsing.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#authentication</string>
-			<key>pfm_name</key>
-			<string></string>
-			<key>pfm_title</key>
-			<string></string>
-			<key>pfm_type</key>
-			<string></string>
-            </dict>-->
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
-			<key>pfm_description</key>
-			<string>Enable or disable automatic application update in the background, when the application is not running.
-If set to true, application updates may be installed (without user approval) in the background, even when the application is not running. The operating system might still require approval.
-If set to false, the application will not try to install updates when the application is not running.
-If you have disabled updates via DisableAppUpdate or disabled automatic updates via AppAutoUpdate, this policy has no effect.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#backgroundappupdate</string>
 			<key>pfm_name</key>
-			<string>BackgroundAppUpdate</string>
-			<key>pfm_title</key>
-			<string>Background App Update</string>
+			<string>Authentication</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>SPNEGO</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Delegated</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>NTLM</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>AllowNonFQDN</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_name</key>
+							<string>SPNEGO</string>
+							<key>pfm_type</key>
+							<string>boolean</string>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>NTLM</string>
+							<key>pfm_type</key>
+							<string>boolean</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>AllowProxies</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_name</key>
+							<string>SPNEGO</string>
+							<key>pfm_type</key>
+							<string>boolean</string>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>NTLM</string>
+							<key>pfm_type</key>
+							<string>boolean</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>PrivateBrowsing</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Locked</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
 			<key>pfm_type</key>
-			<string>boolean</string>
+			<string>dictionary</string>
 		</dict>
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Block access to the Add-ons Manager (about:addons).</string>
 			<key>pfm_documentation_url</key>
@@ -340,10 +326,9 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Block access to about:config.</string>
 			<key>pfm_documentation_url</key>
@@ -355,10 +340,9 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Block access to About Profiles (about:profiles).</string>
 			<key>pfm_documentation_url</key>
@@ -370,10 +354,9 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Block access to About Profiles (about:profiles).</string>
 			<key>pfm_documentation_url</key>
@@ -385,10 +368,9 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Enable or disable the detection of captive portals.</string>
 			<key>pfm_documentation_url</key>
@@ -400,14 +382,78 @@ If you have disabled updates via DisableAppUpdate or disabled automatic updates 
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: Certificates | ImportEnterpriseRoots -->
-        <!-- Certificates | ImportEnterpriseRoots -->
-        <!-- Cookies -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_name</key>
+			<string>Certificates</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>ImportEnterpriseRoots</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Install</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_name</key>
+			<string>Cookies</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>Allow</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Block</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Locked</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Set the default download directory.
 You can use ${home} for the native home directory.</string>
@@ -420,10 +466,64 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
+			<key>pfm_description</key>
+			<string>Set and lock the download directory.
+You can use ${home} for the native home directory.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#downloaddirectory</string>
+			<key>pfm_name</key>
+			<string>DownloadDirectory</string>
+			<key>pfm_title</key>
+			<string>Download Directory</string>
+			<key>pfm_type</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>pfm_name</key>
+			<string>DNSOverHTTPS</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>Enabled</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>ProviderURL</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Locked</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>ExcludedDomains</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Turn off application updates within Thunderbird.</string>
 			<key>pfm_documentation_url</key>
@@ -435,10 +535,9 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
 			<key>pfm_description</key>
 			<string>Disable the built in PDF viewer. PDF files are downloaded and sent externally.</string>
 			<key>pfm_documentation_url</key>
@@ -450,12 +549,84 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: DisabledCiphers -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_name</key>
+			<string>DisabledCiphers</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_DHE_RSA_WITH_AES_256_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_RSA_WITH_AES_128_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_RSA_WITH_AES_256_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_RSA_WITH_3DES_EDE_CBC_SHA</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_RSA_WITH_AES_128_GCM_SHA256</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>TLS_RSA_WITH_AES_256_GCM_SHA384</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string></string>
 			<key>pfm_documentation_url</key>
@@ -467,11 +638,9 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Remove the master password functionality.
 If this value is true, it works the same as setting PrimaryPassword to false and removes the primary password functionality.
@@ -485,10 +654,9 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Do not allow passwords to be shown in saved logins</string>
 			<key>pfm_documentation_url</key>
@@ -500,11 +668,9 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Disable safe mode within the browser.</string>
 			<key>pfm_documentation_url</key>
@@ -516,13 +682,30 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: DisableSecurityBypass -->
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>77.0</string>
+			<key>pfm_name</key>
+			<string>DisableSecurityBypass</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>InvalidCertificate</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>SafeBrowsing</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>77.0</string>
 			<key>pfm_description</key>
 			<string>Prevent system add-ons from being installed or update.</string>
 			<key>pfm_documentation_url</key>
@@ -534,11 +717,9 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Prevent the upload of telemetry data.
 As of Thunderbird 83 and Thunderbird ESR 78.5, local storage of telemetry data is disabled as well.
@@ -552,31 +733,93 @@ Mozilla recommends that you do not disable telemetry. Information collected thro
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: DNSOverHTTPS -->
-
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
-			<key>pfm_description</key>
-			<string>Set and lock the download directory.
-You can use ${home} for the native home directory.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#downloaddirectory</string>
 			<key>pfm_name</key>
-			<string>DownloadDirectory</string>
-			<key>pfm_title</key>
-			<string>Download Directory</string>
+			<string>Extensions</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>Install</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Uninstall</string>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Locked</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>array</string>
+				</dict>
+			</array>
 			<key>pfm_type</key>
-			<string>string</string>
+			<string>dictionary</string>
 		</dict>
-
-        <!-- TODO Extensions, ExtensionSettings -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_name</key>
+			<string>ExtensionSettings</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>*</string>
+					<key>pfm_subkeys</key>
+					<array>
+						<dict>
+							<key>pfm_name</key>
+							<string>blocked_install_message</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>install_sources</string>
+							<key>pfm_subkeys</key>
+							<array>
+								<dict>
+									<key>pfm_type</key>
+									<string>string</string>
+								</dict>
+							</array>
+							<key>pfm_type</key>
+							<string>array</string>
+						</dict>
+						<dict>
+							<key>pfm_name</key>
+							<string>installation_mode</string>
+							<key>pfm_type</key>
+							<string>string</string>
+						</dict>
+					</array>
+					<key>pfm_type</key>
+					<string>dictionary</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Control extension updates.</string>
 			<key>pfm_documentation_url</key>
@@ -588,12 +831,9 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: Handlers -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
 			<key>pfm_description</key>
 			<string>Control hardware acceleration.</string>
 			<key>pfm_documentation_url</key>
@@ -605,7 +845,6 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
 			<key>pfm_app_min</key>
 			<string>68.0</string>
@@ -630,6 +869,7 @@ You can use ${home} for the native home directory.</string>
 					<string>Allow</string>
 					<key>pfm_subkeys</key>
 					<array>
+						<dict/>
 						<dict>
 							<key>pfm_name</key>
 							<string>Allowed Domains</string>
@@ -653,8 +893,8 @@ You can use ${home} for the native home directory.</string>
 					<string>Optional. If this is set to false, add-ons cannot be installed by the user.</string>
 					<key>pfm_name</key>
 					<string>Default</string>
-                    <key>pfm_title</key>
-                    <string>Allow Extension Installs by Default</string>
+					<key>pfm_title</key>
+					<string>Allow Extension Installs by Default</string>
 					<key>pfm_type</key>
 					<string>boolean</string>
 				</dict>
@@ -664,95 +904,9 @@ You can use ${home} for the native home directory.</string>
 			<key>pfm_type</key>
 			<string>dictionary</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
-			<key>pfm_description</key>
-			<string>Switch to manual updates only.
-If this policy is enabled:
-    1. The user will never be prompted to install updates.
-    2. Thunderbird will not check for updates in the background, though it will check automatically when an update UI is displayed (such as the one in the About dialog). This check will be used to show "Update to version X" in the UI, but will not automatically download the update or prompt the user to update in any other way.
-    3. The update UI will work as expected, unlike when using DisableAppUpdate.
-This policy is primarily intended for advanced end users, not for enterprises.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#manualappupdateonly</string>
-			<key>pfm_name</key>
-			<string>ManualAppUpdateOnly</string>
-			<key>pfm_title</key>
-			<string>Manual App Update Only</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-		</dict>
-
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
-			<key>pfm_description</key>
-			<string>Enable or disable network prediction (DNS prefetching).</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#networkprediction</string>
-			<key>pfm_name</key>
-			<string>NetworkPrediction</string>
-			<key>pfm_title</key>
-			<string>Network Prediction</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-		</dict>
-
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
-			<key>pfm_description</key>
-			<string>Control whether or not Thunderbird offers to save passwords.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#offertosavelogins</string>
-			<key>pfm_name</key>
-			<string>OfferToSaveLogins</string>
-			<key>pfm_title</key>
-			<string>Offer To Save Logins</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-		</dict>
-
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
-			<key>pfm_description</key>
-			<string>Sets the default value of signon.rememberSignons without locking it.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#offertosaveloginsdefault</string>
-			<key>pfm_name</key>
-			<string>OfferToSaveLoginsDefault</string>
-			<key>pfm_title</key>
-			<string>Offer To Save Logins Default</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-		</dict>
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
-			<key>pfm_description</key>
-			<string>Remove access to the password manager via preferences and blocks about:logins.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#passwordmanagerenabled</string>
-			<key>pfm_name</key>
-			<string>PasswordManagerEnabled</string>
-			<key>pfm_title</key>
-			<string>Password Manager Enabled</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-		</dict>
-
-        <!-- TODO: PDFjs, Preferences -->
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>91.0</string>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
 			<key>pfm_description</key>
 			<string>Require or prevent using a primary (formerly master) password.
 If this value is true, a primary password is required. If this value is false, it works the same as if DisableMasterPasswordCreation was true and removes the primary password functionality.
@@ -766,73 +920,182 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>78.0</string>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
 			<key>pfm_description</key>
-			<string>Ask where to save each file before downloading.</string>
+			<string>Enable or disable network prediction (DNS prefetching).</string>
 			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#promptfordownloadlocation</string>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#networkprediction</string>
 			<key>pfm_name</key>
-			<string>PromptForDownloadLocation</string>
+			<string>NetworkPrediction</string>
 			<key>pfm_title</key>
-			<string>Prompt For Download Location</string>
+			<string>Network Prediction</string>
 			<key>pfm_type</key>
 			<string>boolean</string>
 		</dict>
-
-        <!-- TODO: Proxy -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
+			<key>pfm_description</key>
+			<string>Control whether or not Thunderbird offers to save passwords.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#offertosavelogins</string>
+			<key>pfm_name</key>
+			<string>OfferToSaveLogins</string>
+			<key>pfm_title</key>
+			<string>Offer To Save Logins</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
+			<key>pfm_description</key>
+			<string>Sets the default value of signon.rememberSignons without locking it.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#offertosaveloginsdefault</string>
+			<key>pfm_name</key>
+			<string>OfferToSaveLoginsDefault</string>
+			<key>pfm_title</key>
+			<string>Offer To Save Logins Default</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
+			<key>pfm_description</key>
+			<string>Remove access to the password manager via preferences and blocks about:logins.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#passwordmanagerenabled</string>
+			<key>pfm_name</key>
+			<string>PasswordManagerEnabled</string>
+			<key>pfm_title</key>
+			<string>Password Manager Enabled</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_name</key>
+			<string>PDFjs</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>Enabled</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>EnablePermissions</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_name</key>
+			<string>Proxy</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_name</key>
+					<string>Mode</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>HTTPProxy</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>UseHTTPProxyForAllProtocols</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>SSLProxy</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>FTPProxy</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>SOCKSProxy</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Passthrough</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>AutoConfigURL</string>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>AutoLogin</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>UseProxyForDNS</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+				<dict>
+					<key>pfm_name</key>
+					<string>Locked</string>
+					<key>pfm_type</key>
+					<string>boolean</string>
+				</dict>
+			</array>
+			<key>pfm_type</key>
+			<string>dictionary</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Set the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.</string>
 			<key>pfm_documentation_url</key>
 			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#requestedlocales</string>
 			<key>pfm_name</key>
 			<string>RequestedLocales</string>
+			<key>pfm_subkeys</key>
+			<array>
+				<dict>
+					<key>pfm_type</key>
+					<string>string</string>
+				</dict>
+			</array>
 			<key>pfm_title</key>
 			<string>Requested Locales</string>
 			<key>pfm_type</key>
-			<string>string</string>
+			<string>array</string>
 		</dict>
-
-        <!-- TODO: SearchEngines | Add ,  SearchEngines | Default ,  SearchEngines | PreventInstalls ,  SearchEngines | Remove -->
-
 		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
-			<key>pfm_description</key>
-			<string>Set and lock the maximum version of TLS.</string>
-			<key>pfm_documentation_url</key>
-			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#sslversionmax</string>
-			<key>pfm_name</key>
-			<string>SSLVersionMax</string>
-			<key>pfm_range_list</key>
-			<array>
-				<string>tls1</string>
-				<string>tls1.1</string>
-				<string>tls1.2</string>
-				<string>tls1.3</string>
-			</array>
-			<key>pfm_range_list_titles</key>
-			<array>
-				<string>TLS 1</string>
-				<string>TLS 1.1</string>
-				<string>TLS 1.2</string>
-				<string>TLS 1.3</string>
-			</array>
-			<key>pfm_title</key>
-			<string>Maximum SSL Version</string>
-			<key>pfm_type</key>
-			<string>string</string>
-		</dict>
-
-		<dict>
-            <key>pfm_app_min</key>
-            <string>68.0</string>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
 			<string>Set and lock the minimum version of TLS.</string>
 			<key>pfm_documentation_url</key>
@@ -858,286 +1121,95 @@ If both DisableMasterPasswordCreation and PrimaryPassword are used, DisableMaste
 			<key>pfm_type</key>
 			<string>string</string>
 		</dict>
-        <!-- TEMPLATES -->
-
-
-
-        <dict>
-			<key>pfm_name</key>
-			<string>ExampleDescriptions</string>
-			<key>pfm_type</key>
-			<string>date</string>
-			<key>pfm_title</key>
-			<string>Example: Description</string>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>68.0</string>
 			<key>pfm_description</key>
-			<string>This is the description of the ExampleDescriptions key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-		</dict>
-
-
-		<!-- Example: Minimal Key -->
-		<!-- This is the minimal requirement for a key to be managed -->
-		<dict>
-			
-			<!-- This is the key name that will be set as the key for the value in the exported profile. -->
+			<string>Set and lock the maximum version of TLS.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#sslversionmax</string>
 			<key>pfm_name</key>
-			<string>ExampleString</string>
-			
-			<!-- Type determines what value type this key should be when it's exported to a profile. -->
-			<key>pfm_type</key>
-			<string>string</string>
-		</dict>
-		
-				
-		<!-- Example: Title -->
-		<!-- This example shows how to set a Title for the key, other than the key name itself. -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleTitle</string>
-			<key>pfm_type</key>
-			<string>string</string>
-			
-			<!-- This is the title that will be displayed for the key. This value is only used when displaying the key in the UI. -->
-			<key>pfm_title</key>
-			<string>Example: Title</string>
-		</dict>
-		
-		<!-- Example: Description -->
-		<!-- This example shows how to include descriptions -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleDescriptions</string>
-			<key>pfm_type</key>
-			<string>date</string>
-			<key>pfm_title</key>
-			<string>Example: Description</string>
-			
-			<!-- This value will be used as the description shown below the Tile for the key. -->
-			<key>pfm_description</key>
-			<string>This is the description of the ExampleDescriptions key.</string>
-			
-			<!-- If you have gotten the description form a reference source or documentation, that full exact description should be set to this key. -->
-			<!-- Currently this key is not shown in the ProfileCreator application but will be used for https://mosen.github.io/profiledocs/, and in a future version of ProfileCreator.-->
-			<!-- NOTE: It should be included, even if it's identical to the pfm_description key. -->
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-		</dict>
-		
-		<!-- Example: Required -->
-		<!-- This example shows a key to be required to be included in the exported profile -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleRequired</string>
-			<key>pfm_type</key>
-			<string>boolean</string>
-			<key>pfm_title</key>
-			<string>Example: Required</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExampleRequired key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- When this key should be required. "always" means that this key cannot be excluded when exporting the payload. -->
-			<!-- For more options for this key, see the documentation:  https://github.com/erikberglund/ProfileManifests/wiki/Manifest-Format -->
-			<key>pfm_require</key>
-			<string>always</string>
-		</dict>
-		
-		<!-- Example: Default Value -->
-		<!-- This example shows a key with a default value. -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleDefaultValue</string>
-			<key>pfm_type</key>
-			<string>string</string>
-			<key>pfm_title</key>
-			<string>Example: Default Value</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExampleDefaultValue key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This value will be automatically set as the value until the user changes it. -->
-			<key>pfm_default</key>
-			<string>Default Value</string>
-		</dict>
-		
-		<!-- Example: Placeholder Value -->
-		<!-- This example shows a key with a placeholder value. -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExamplePlaceholderValue</string>
-			<key>pfm_type</key>
-			<string>string</string>
-			<key>pfm_title</key>
-			<string>Example: Placeholder Value</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExamplePlaceholderValue key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This value will be shown as the placeholder value when the TextField is empty. -->
-			<key>pfm_value_placeholder</key>
-			<string>Placeholder Value</string>
-		</dict>
-		
-		<!-- PopUp Button Example: Integer -->
-		<!-- This example shows how to include a PopUp Button with names that will set integer values as the value to this key. -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExamplePopUpButtonInteger</string>
-			<key>pfm_type</key>
-			<string>integer</string>
-			<key>pfm_title</key>
-			<string>Example: Integer PopUp Button</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExamplePopUpButtonInteger key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This is the list of possible values to be set for this key. -->
-			<!-- NOTE: This list values MUST be of the same type as set in pfm_type -->
+			<string>SSLVersionMax</string>
 			<key>pfm_range_list</key>
 			<array>
-				<integer>10</integer>
-				<integer>20</integer>
-				<integer>30</integer>
+				<string>tls1</string>
+				<string>tls1.1</string>
+				<string>tls1.2</string>
+				<string>tls1.3</string>
 			</array>
-			
-			<!-- This is a list of the titles for each item in the pfm_range_list -->
-			<!-- NOTE: This list MUST be strings, and it MUST contain exactly the same number of items as the pfm_range_list -->
 			<key>pfm_range_list_titles</key>
 			<array>
-				<string>Ten</string>
-				<string>Twenty</string>
-				<string>Thirty</string>
+				<string>TLS 1</string>
+				<string>TLS 1.1</string>
+				<string>TLS 1.2</string>
+				<string>TLS 1.3</string>
 			</array>
-		</dict>
-		
-		<!-- Example: Dictionary -->
-		<!-- This example shows how to define a dictionary -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleDictinoary</string>
-			<key>pfm_type</key>
-			<string>dictionary</string>
 			<key>pfm_title</key>
-			<string>Example: Dictionary</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExampleDictinoary key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This key defines the contents of the array. As this is an array, it should only include ONE (1) subkey, as the array should only contain a single type.-->
-			<key>pfm_subkeys</key>
-			<array>
-				<dict>
-					<key>pfm_name</key>
-					<string>ExampleDictionaryItemString</string>
-					<key>pfm_type</key>
-					<string>string</string>
-					<key>pfm_title</key>
-					<string>String</string>
-					<key>pfm_description</key>
-					<string>This is the description of the ExampleDictionaryItemString key.</string>
-					<key>pfm_description_reference</key>
-					<string>Optional. This is the original documentation's description</string>
-				</dict>
-				<dict>
-					<key>pfm_name</key>
-					<string>ExampleDictionaryItemBoolean</string>
-					<key>pfm_type</key>
-					<string>boolean</string>
-					<key>pfm_title</key>
-					<string>Boolean</string>
-					<key>pfm_description</key>
-					<string>This is the description of the ExampleDictionaryItemBoolean key.</string>
-					<key>pfm_description_reference</key>
-					<string>Optional. This is the original documentation's description</string>
-				</dict>
-			</array>
-		</dict>
-		
-		<!-- Example: Array of Strings -->
-		<!-- This example shows how to define an array of strings -->
-		<dict>
-			<key>pfm_name</key>
-			<string>ExampleArrayStrings</string>
+			<string>Maximum SSL Version</string>
 			<key>pfm_type</key>
-			<string>array</string>
-			<key>pfm_title</key>
-			<string>Example: Array of Strings</string>
-			<key>pfm_description</key>
-			<string>This is the description of the ExampleArrayStrings key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This key defines the contents of the array. As this is an array, it should only include ONE (1) subkey, as the array should only contain a single type.-->
-			<key>pfm_subkeys</key>
-			<array>
-				<dict>
-					<!-- For Array Subkeys, the pfm_type is the ONLY required key, because the array will only contain the value and no key. -->
-					<key>pfm_type</key>
-					<string>string</string>
-				</dict>
-			</array>
+			<string>string</string>
 		</dict>
-		
-		
-		<!-- Example: Array of Dictionaries -->
-		<!-- This example shows how to define an array of dictionaries -->
 		<dict>
-			<key>pfm_name</key>
-			<string>ExampleArrayDictionaries</string>
-			<key>pfm_type</key>
-			<string>array</string>
-			<key>pfm_title</key>
-			<string>Example: Array of Dictionaries</string>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
 			<key>pfm_description</key>
-			<string>This is the description of the ExampleArrayDictionaries key.</string>
-			<key>pfm_description_reference</key>
-			<string>Optional. This is the original documentation's description</string>
-			
-			<!-- This key defines the contents of the array. As this is an array, it should only include ONE (1) subkey, as the array should only contain a single type.-->
-			<key>pfm_subkeys</key>
-			<array>
-				<dict>
-					<key>pfm_type</key>
-					<string>dictionary</string>
-					
-					<!-- The dictionary subkeys is like any other pfm_subkey and should contain all keys the dictionary can configure. -->
-					<!-- Remember to set pfm_required wherever that is needed. -->
-					<key>pfm_subkeys</key>
-					<array>
-						<dict>
-							<key>pfm_name</key>
-							<string>ExampleArrayItemString</string>
-							<key>pfm_type</key>
-							<string>string</string>
-							<key>pfm_title</key>
-							<string>String</string>
-							<key>pfm_description</key>
-							<string>This is the description of the ExampleArrayItemString key.</string>
-							<key>pfm_description_reference</key>
-							<string>Optional. This is the original documentation's description</string>
-						</dict>
-						<dict>
-							<key>pfm_name</key>
-							<string>ExampleArrayItemBoolean</string>
-							<key>pfm_type</key>
-							<string>boolean</string>
-							<key>pfm_title</key>
-							<string>Boolean</string>
-							<key>pfm_description</key>
-							<string>This is the description of the ExampleArrayItemBoolean key.</string>
-							<key>pfm_description_reference</key>
-							<string>Optional. This is the original documentation's description</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
+			<string>Enable or disable automatic application update in the background, when the application is not running.
+If set to true, application updates may be installed (without user approval) in the background, even when the application is not running. The operating system might still require approval.
+If set to false, the application will not try to install updates when the application is not running.
+If you have disabled updates via DisableAppUpdate or disabled automatic updates via AppAutoUpdate, this policy has no effect.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#backgroundappupdate</string>
+			<key>pfm_name</key>
+			<string>BackgroundAppUpdate</string>
+			<key>pfm_title</key>
+			<string>Background App Update</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>91.0</string>
+			<key>pfm_description</key>
+			<string>Switch to manual updates only.
+If this policy is enabled:
+    1. The user will never be prompted to install updates.
+    2. Thunderbird will not check for updates in the background, though it will check automatically when an update UI is displayed (such as the one in the About dialog). This check will be used to show "Update to version X" in the UI, but will not automatically download the update or prompt the user to update in any other way.
+    3. The update UI will work as expected, unlike when using DisableAppUpdate.
+This policy is primarily intended for advanced end users, not for enterprises.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#manualappupdateonly</string>
+			<key>pfm_name</key>
+			<string>ManualAppUpdateOnly</string>
+			<key>pfm_title</key>
+			<string>Manual App Update Only</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
+		</dict>
+		<dict>
+			<key>pfm_app_min</key>
+			<string>78.0</string>
+			<key>pfm_description</key>
+			<string>Ask where to save each file before downloading.</string>
+			<key>pfm_documentation_url</key>
+			<string>https://github.com/thunderbird/policy-templates/tree/master/templates/central#promptfordownloadlocation</string>
+			<key>pfm_name</key>
+			<string>PromptForDownloadLocation</string>
+			<key>pfm_title</key>
+			<string>Prompt For Download Location</string>
+			<key>pfm_type</key>
+			<string>boolean</string>
 		</dict>
 	</array>
+	<key>pfm_targets</key>
+	<array>
+		<string>system</string>
+		<string>user</string>
+	</array>
+	<key>pfm_title</key>
+	<string>Thunderbird</string>
+	<key>pfm_unique</key>
+	<false/>
+	<key>pfm_version</key>
+	<integer>1</integer>
 </dict>
 </plist>
